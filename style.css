@@ -51,8 +51,9 @@ main{
 }
 
 .board__number{
-    line-height: 3.125rem;
-    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     border: 1px solid black;
 }
 
