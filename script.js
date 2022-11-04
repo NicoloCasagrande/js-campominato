@@ -1,13 +1,8 @@
 "use strict";
-const playBoard = document.querySelector('.board');
 
-const playButton = document.querySelector('button');
-const playDifficult = document.querySelector('select');
-const points = document.querySelector('.punteggio');
-
-let difficult = "easy";
-let maxNumber = 100;
-startGame(difficult);
+/*----------------------
+     FUNCTIONS
+-----------------------*/
 
 function startGame(difficult){
     // svuotiamo il contenitore delle celle
@@ -19,7 +14,7 @@ function startGame(difficult){
     let sconfitta = false;
 
     // verifico la difficoltà inserita, all'inizio è inizializzata a easy(100 celle)
-    if(difficult === "easy"){
+    if(difficult === "hard"){
         maxNumber = 100;
     }else if(difficult === "medium"){
         maxNumber = 81;
@@ -64,7 +59,7 @@ function startGame(difficult){
         });
 
         // a seconda della difficoltà applico una larghezza definita alle celle in modo che occupino in ogni caso la nostra board che è 500px x 500px
-        if(difficult === "easy"){
+        if(difficult === "hard"){
             playNumber.style.width = "calc(100%/10)";
             playNumber.style.height = "calc(100%/10)";
         }else if(difficult === "medium"){
@@ -78,12 +73,6 @@ function startGame(difficult){
     }
     console.log(bombs);
 }
-
-// creo un event che fa partire una nuova partita in base alla difficoltà scelta
-playButton.addEventListener("click", function(){
-    difficult = playDifficult.value;
-    startGame(difficult);
-});
 
 // funzione che crea l'array con le bombe
 function bombCreation(maxNumber){
@@ -112,13 +101,24 @@ function loseGame(bombsArray){
     }
 }
 
+/*----------------------
+     PRIMARY CODE
+-----------------------*/
+
+const playBoard = document.querySelector('.board');
+
+const playButton = document.querySelector('button');
+const playDifficult = document.querySelector('select');
+const points = document.querySelector('.punteggio');
+
+let difficult = "hard";
+let maxNumber = 100;
+startGame(difficult);
+
+// creo un event che fa partire una nuova partita in base alla difficoltà scelta
+playButton.addEventListener("click", function(){
+    difficult = playDifficult.value;
+    startGame(difficult);
+});
 
 
-// creo la tabella con tutti i numeri
-
-
-
-
-
-// console.log(this);
-// this.classList.add();
